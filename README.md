@@ -1,6 +1,24 @@
-RUN:
+A React Native app for iOS that uses [shop.com api](http://developer.shop.com/)
+to:
 
-Download Expo and view this project from here:
+1. do general searches using user input
+2. do specific product searches from the results of the general search
+
+Features:
+
+* Redux
+* Redux Saga
+* React Navigation
+* Extended Style Sheets
+
+Limitations:
+
+* very basic
+* no network status
+* no loading status
+* no hardware features
+
+RUN: Download Expo and view this project from here:
 [https://expo.io/@tgdevjs/tgshop](https://expo.io/@tgdevjs/tgshop)\
 Scaning the QR code or Typing exp://exp.host/@tgdevjs/tgshop inside of Expo will
 open this experience. ![expo qr code](readmeAssets/expo.png)
