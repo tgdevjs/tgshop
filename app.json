@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "tgshop",
+    "icon": "./tgshopIcon_512.png",
+    "version": "1.0.0",
+    "slug": "exp://exp.host/@tgdevjs/tgshop",
+    "sdkVersion": "22.0.0",
+    "orientation": "portrait",
+    "ios": {
+      "bundleIdentifier": "com.tgdevjs.tgshop"
+    },
+    "android": {
+      "package": "com.tgdevjs.tgshop"
+    }
+  }
+}
