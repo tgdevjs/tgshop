@@ -1,6 +1,7 @@
 RUN:
 
-View this project and download expo from here: https://expo.io/@tgdevjs/tgshop\
+Download Expo and view this project from here:
+[https://expo.io/@tgdevjs/tgshop](https://expo.io/@tgdevjs/tgshop)\
 Scaning the QR code or Typing exp://exp.host/@tgdevjs/tgshop inside of Expo will
 open this experience. ![expo qr code](readmeAssets/expo.png)
 
