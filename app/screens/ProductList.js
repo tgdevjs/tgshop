@@ -8,8 +8,7 @@ import { ProductListItem, Separator } from "../components/List";
 import { MoneyIcon } from "../components/MoneyIcon";
 import {
   getInitialProductList,
-  getProductList,
-  setSearchTerm
+  getProductListFromSearchTerm
 } from "../actions/products";
 
 const styles = StyleSheet.create({
@@ -29,15 +28,16 @@ class ProductCategoryList extends Component {
     this.props.dispatch(getInitialProductList());
   }
 
-  handlePressSearch = () => {
-    this.props.dispatch(getProductList());
+  handleChangeText = text => {
+    this.props.dispatch(getProductListFromSearchTerm(text));
   };
 
-  handleTextChange = text => {
-    this.props.dispatch(setSearchTerm(text));
+  handlePressBarcode = () => {
+    this.props.navigation.navigate("BarcodeScanner");
   };
 
-  handlePress = item => {
+  handlePressListItem = item => {
+    console.log("ON PRESS PRODUCTT LISTITEM: ", item);
     const title = item.caption || "Product Detail";
     this.props.navigation.navigate("ProductDetail", { title, item });
   };
@@ -48,13 +48,15 @@ class ProductCategoryList extends Component {
         <StatusBar barStyle="default" tranlucent={false} />
         <SearchHeader
           onPress={this.handlePressSearch}
-          onChangeText={this.handleTextChange}
+          onChangeText={this.handleChangeText}
+          onPressBarcode={this.handlePressBarcode}
+          value={this.props.searchTerm}
         />
         <FlatList
           data={this.props.productList}
           renderItem={({ item }) => (
             <ProductListItem
-              onPress={() => this.handlePress(item)}
+              onPress={() => this.handlePressListItem(item)}
               moneyIcon={<MoneyIcon />}
               item={item}
             />
@@ -68,6 +70,7 @@ class ProductCategoryList extends Component {
 }
 
 const mapStateToProps = state => ({
+  searchTerm: state.products.searchTerm,
   productList: state.products.productSearch.searchItems
 });
 

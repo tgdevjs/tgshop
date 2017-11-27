@@ -4,6 +4,8 @@ import { StackNavigator } from "react-navigation";
 
 import ProductList from "../screens/ProductList";
 import ProductDetail from "../screens/ProductDetail";
+import BarcodeScannerScreen from "../screens/BarcodeScannerScreen";
+
 import { ImageHeader } from "../components/Header";
 
 const ProductListStack = StackNavigator({
@@ -25,11 +27,13 @@ export default StackNavigator(
   {
     ProductList: {
       screen: ProductListStack
+    },
+    BarcodeScanner: {
+      screen: BarcodeScannerScreen
     }
   },
   {
     mode: "modal",
-    cardStyle: { paddingTop: StatusBar.currentHeight },
     headerMode: "none"
   }
 );

@@ -1,16 +1,23 @@
-import { takeEvery, call, put, select } from "redux-saga/effects";
+import { takeEvery, call, put, select, takeLatest } from "redux-saga/effects";
+import { delay } from "redux-saga";
 import {
   GET_INITIAL_PRODUCT_LIST,
   PRODUCT_LIST_RESULT,
   PRODUCT_LIST_ERROR,
-  GET_PRODUCT_LIST
+  GET_PRODUCT_LIST,
+  SET_SEARCH_TERM,
+  GET_PRODUCT_LIST_FROM_SEARCH_TERM
 } from "../actions/products";
 import {
   GET_PRODUCT_DETAIL,
   PRODUCT_DETAIL_RESULT,
   PRODUCT_DETAIL_ERROR
 } from "../actions/productDetail";
+
+// NOTE: import API_KEY here
 import { API_KEY } from "../../appconfig.json";
+
+const REQUEST_DELAY_TIME = 500;
 
 // Product List
 export const getProductList = term =>
@@ -31,6 +38,12 @@ const fetchProductList = function*(action) {
   } catch (error) {
     yield put({ type: PRODUCT_LIST_ERROR, error: error.message });
   }
+};
+
+const getProductListFromSearchTerm = function*({ searchTerm }) {
+  yield put({ type: SET_SEARCH_TERM, searchTerm });
+  yield call(delay, REQUEST_DELAY_TIME);
+  yield put({ type: GET_PRODUCT_LIST });
 };
 
 // Product Detail
@@ -56,9 +69,16 @@ const fetchProductDetail = function*(action) {
   }
 };
 
+// Root
 const rootSaga = function*() {
   yield takeEvery(GET_INITIAL_PRODUCT_LIST, fetchProductList);
   yield takeEvery(GET_PRODUCT_LIST, fetchProductList);
+  // will cancel current running handleInput task
+  // https://github.com/redux-saga/redux-saga/blob/master/docs/recipes/README.md
+  yield takeLatest(
+    GET_PRODUCT_LIST_FROM_SEARCH_TERM,
+    getProductListFromSearchTerm
+  );
   yield takeEvery(GET_PRODUCT_DETAIL, fetchProductDetail);
 };
 

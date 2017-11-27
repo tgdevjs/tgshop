@@ -8,25 +8,32 @@ import {
 } from "react-native";
 import color from "color";
 import PropTypes from "prop-types";
+import { FontAwesome } from "@expo/vector-icons";
 
 import styles from "./styles";
 
 const SearchHeader = props => {
-  const { onPress } = props;
+  const { onPressBarcode } = props;
   const underlayColor = color(styles.$underlayColorBase).darken(
     styles.$underlayColorModifier
   );
   return (
     <View style={styles.searchHeaderContainer}>
       <View style={styles.searchContainer}>
-        <TextInput style={styles.searchInput} {...props} />
+        <TextInput
+          style={styles.searchInput}
+          defaultValue=""
+          placeholder={"Search"}
+          placeholderTextColor={styles.$inputText}
+          {...props}
+        />
         <TouchableHighlight
           style={styles.buttonHighlight}
-          onPress={onPress}
+          onPress={onPressBarcode}
           underlayColor={underlayColor}
         >
           <View style={styles.buttonContainer}>
-            <Text style={styles.searchText}>Search</Text>
+            <FontAwesome name="barcode" size={30} color="#000" />
           </View>
         </TouchableHighlight>
       </View>
@@ -35,7 +42,8 @@ const SearchHeader = props => {
 };
 
 SearchHeader.propTypes = {
-  onPress: PropTypes.func
+  onPressBarcode: PropTypes.func,
+  onChangeText: PropTypes.func
 };
 
 export default SearchHeader;

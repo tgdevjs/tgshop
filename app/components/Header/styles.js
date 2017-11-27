@@ -4,37 +4,43 @@ import { StatusBar } from "react-native";
 const styles = EStyleSheet.create({
   $underlayColorBase: "$white",
   $underlayColorModifier: 0.1,
-
-  searchHeaderContainer: {
+  container: {
     height: 60,
+    backgroundColor: "$white",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  searchHeaderContainer: {
+    height: 40,
     backgroundColor: "$border",
     justifyContent: "center",
     alignItems: "center"
   },
   searchContainer: {
     flexDirection: "row",
-    height: 30,
+    height: 36,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "$white",
-    borderRadius: 5
+    backgroundColor: "$white"
   },
   buttonContainer: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
+    marginHorizontal: 10
   },
   buttonHighlight: {
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5
   },
   searchInput: {
-    width: 200,
+    flex: 1,
     color: "$inputText",
-    marginHorizontal: 5
+    marginHorizontal: 5,
+    fontSize: 20
   },
   searchText: {
     color: "$inputText",
-    fontSize: 12,
+    fontSize: 16,
     marginHorizontal: 5
   },
   button: {
