@@ -38,4 +38,3 @@ Limitations:
 * very basic
 * no network status
 * no loading status
-* no hardware features
