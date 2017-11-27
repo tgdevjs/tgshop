@@ -4,10 +4,15 @@ to:
 1. Search Term: http://api.shop.com/sites/v1/search/Term
 2. Search Product: http://api.shop.com/stores/v1/products
 
-RUN: Download Expo and view this project from here:
-[https://expo.io/@tgdevjs/tgshop](https://expo.io/@tgdevjs/tgshop)\
-Scaning the QR code or Typing exp://exp.host/@tgdevjs/tgshop inside of Expo will
-open this experience. ![expo qr code](readmeAssets/20171127_expo.png)
+RUN:
+
+Download Expo here: https://expo.io/
+
+Open project inside of expo app with this link:
+[exp://rp-qn7.tgdevjs.tgshop.exp.direct:80](exp://rp-qn7.tgdevjs.tgshop.exp.direct:80)\
+Or scan QR code inside expo app:
+
+![expo qr code](readmeAssets/20171127_expo.png)
 
 BUILD:
 
