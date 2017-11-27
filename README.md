@@ -10,7 +10,7 @@ Download Expo here: https://expo.io/
 
 Scan QR code inside expo app:
 
-![expo qr code](readmeAssets/20171127_expo.png)
+![expo qr code](readmeAssets/20171127_expo_1.png)
 
 BUILD:
 
@@ -37,4 +37,3 @@ Limitations:
 
 * very basic
 * no network status
-* no loading status

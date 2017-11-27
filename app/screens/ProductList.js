@@ -6,6 +6,7 @@ import { Container } from "../components/Container";
 import { SearchHeader } from "../components/Header";
 import { ProductListItem, Separator } from "../components/List";
 import { MoneyIcon } from "../components/MoneyIcon";
+import { LoadingIndicator } from "../components/ActivityIndicator";
 import {
   getInitialProductList,
   getProductListFromSearchTerm
@@ -42,6 +43,26 @@ class ProductCategoryList extends Component {
     this.props.navigation.navigate("ProductDetail", { title, item });
   };
 
+  renderProductList = () => {
+    if (this.props.isFetchingProductList) {
+      return <LoadingIndicator />;
+    }
+    return (
+      <FlatList
+        data={this.props.productList}
+        renderItem={({ item }) => (
+          <ProductListItem
+            onPress={() => this.handlePressListItem(item)}
+            moneyIcon={<MoneyIcon />}
+            item={item}
+          />
+        )}
+        keyExtractor={(item, index) => index}
+        ItemSeparatorComponent={Separator}
+      />
+    );
+  };
+
   render() {
     return (
       <Container>
@@ -52,18 +73,7 @@ class ProductCategoryList extends Component {
           onPressBarcode={this.handlePressBarcode}
           value={this.props.searchTerm}
         />
-        <FlatList
-          data={this.props.productList}
-          renderItem={({ item }) => (
-            <ProductListItem
-              onPress={() => this.handlePressListItem(item)}
-              moneyIcon={<MoneyIcon />}
-              item={item}
-            />
-          )}
-          keyExtractor={(item, index) => index}
-          ItemSeparatorComponent={Separator}
-        />
+        {this.renderProductList()}
       </Container>
     );
   }
@@ -71,7 +81,8 @@ class ProductCategoryList extends Component {
 
 const mapStateToProps = state => ({
   searchTerm: state.products.searchTerm,
-  productList: state.products.productSearch.searchItems
+  productList: state.products.productSearch.searchItems,
+  isFetchingProductList: state.products.productSearch.isFetching
 });
 
 export default connect(mapStateToProps)(ProductCategoryList);

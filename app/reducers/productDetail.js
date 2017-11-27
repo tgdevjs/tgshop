@@ -34,7 +34,14 @@ const reducer = (state = initialState, action) => {
         }
       };
     case PRODUCT_DETAIL_ERROR:
-      return { ...state, error: action.error };
+      return {
+        ...state,
+        productDetail: {
+          ...state.productDetail,
+          isFetching: false
+        },
+        error: action.error
+      };
     default:
       return state;
   }

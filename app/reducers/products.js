@@ -75,7 +75,14 @@ const reducer = (state = initialState, action) => {
         }
       };
     case PRODUCT_LIST_ERROR:
-      return { ...state, error: action.error };
+      return {
+        ...state,
+        productSearch: {
+          ...state.productSearch,
+          isFetching: false
+        },
+        error: action.error
+      };
     case SET_SEARCH_TERM:
       return { ...state, searchTerm: action.searchTerm };
     case GET_PRODUCT_LIST:
