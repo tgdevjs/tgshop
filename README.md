@@ -8,10 +8,7 @@ RUN:
 
 Download Expo here: https://expo.io/
 
-Open project inside of expo app with this link:
-[https://exp.host/@tgdevjs/exp://exp.host/@tgdevjs/tgshop](https://exp.host/@tgdevjs/exp://exp.host/@tgdevjs/tgshop)
-
-Or scan QR code inside expo app:
+Scan QR code inside expo app:
 
 ![expo qr code](readmeAssets/20171127_expo.png)
 
